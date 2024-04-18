@@ -100,7 +100,7 @@ void alRecibirMensajePorTopic(char * topic, String incomingMessage)
                         // Send message by a topic.
                         enviarMensajePorTopic(LINE_ENTRANCE_STATUS_TOPIC, msg_json);
                         
-                        infoln("Estación 1, Línea 1: Hay un P-C disponible en la entrada");
+                        infoln("Estación 1, Línea 2: Hay un P-C disponible en la entrada");
                     }
                 }
             }
