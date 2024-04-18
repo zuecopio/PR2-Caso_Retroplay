@@ -14,9 +14,9 @@
 
 /******************************************************************************/
 /*!
- * @brief  Example function.
+ * @brief  Function to know the distance detected by the US.
  * @param  void
- * @return void
+ * @return float
  */
 float getUsDistance(void)
 {

@@ -14,26 +14,29 @@
 
 /******************************************************************************/
 /*!
- * @brief  Example function.
+ * @brief  Function to know the distance detected by the US.
  * @param  void
- * @return void
+ * @return float
  */
-void example(void)
+float getUsDistance(void)
 {
-    // TODO: Desarrollo de la función ...
-    float getDistance()
-    {
-        unsigned long pingTime;
-        float distance;
-        
-        digitalWrite (trigPin, HIGH);
-        delayMicroseconds(10);
-        digitalWrite(trigPin, LOW);
+    unsigned long pingTime;
+    float distance;
     
-        prigTime = pulseIn(echoPin, HIGH, timeOut);
-        distance (float)pingTime * soundVelocity / 2 / 10000; 
-        return distance; 
-    }
-}   /* example() */
+    // Make trigPin output high level lasting for 10μs to triger HC_SR04.
+    digitalWrite(trigPin, HIGH); 
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    
+    // Wait HC-SR04 returning to the high level and measure out this waitting time.
+    pingTime = pulseIn(echoPin, HIGH, timeOut); 
+    
+    // Calculate the distance according to the time.
+    distance = (float)pingTime * soundVelocity / 2 / 10000;
+    
+    // Return the distance value.
+    return distance;
+    
+}   /* getUsDistance() */
 
 /*** end of file ***/

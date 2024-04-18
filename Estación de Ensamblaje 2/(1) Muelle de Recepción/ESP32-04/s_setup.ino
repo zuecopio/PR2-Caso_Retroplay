@@ -20,8 +20,13 @@
  */
 void on_setup(void)
 {
+    // RECEIVING DOCK PRESENCE SENSOR
+    //
+    // Set trigPin to output mode.
     pinMode(trigPin, OUTPUT);
+    // Set echoPin to input mode.
     pinMode(echoPin, INPUT);
+    
 }   /* on_setup() */
 
 /*** end of file ***/

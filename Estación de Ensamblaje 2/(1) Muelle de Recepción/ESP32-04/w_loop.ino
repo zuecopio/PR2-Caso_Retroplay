@@ -14,8 +14,8 @@
 
 long now, lastMsg = 0;
 
-// Tiempo de actualización de los sensores.
-long sensorsUpdateInterval = 5000;
+// Tiempo de actualización del sensor US.
+long sensorsUpdateInterval = 3000;
 
 /******************************************************************************/
 /*!
@@ -30,16 +30,17 @@ void on_loop(void)
     if ((now - lastMsg) > sensorsUpdateInterval)
     {
         lastMsg = now;
-     distance = getUsDistance();
+
+        distance = getUsDistance();
 
         // If the distance is less than 10 cm, there is
-        // a new P-C placed at the entrance of the line.
+        // a new P-C placed at the receiving dock.
         //
         if (distance < 10.0)
         {
             // Create a JSON document.
             JsonDocument doc;
-            doc["Estado muelle"] = "Ocupado";
+            doc["estado_muelle"] = "ocupado";
     
             // Serialize the JSON to a String.
             String msg_json;
@@ -48,10 +49,10 @@ void on_loop(void)
             // Send message by a topic.
             enviarMensajePorTopic(MQTT_TOPIC_RECEPCION_STATUS, msg_json);
             
-            infoln("Estación 2: Hay un P-C disponible en la entrada");
+            infoln("Estación 2, Muelle Recepción: Hay un P-C disponible en el muelle de recepción");
         }
     }
-    #endif
+
 }   /* on_loop() */
 
 /*** end of file ***/

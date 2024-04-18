@@ -31,12 +31,6 @@ void suscribirseATopics(void)
  */
 void alRecibirMensajePorTopic(char * topic, String incomingMessage)
 {
-    // TODO: Controlador que gestiona la recepción de datos.
-
-    // A partir de aquí debemos gestionar los mensajes
-    // recibidos por los diferentes topics (canales).
-    //
-
 }   /* alRecibirMensajePorTopic() */
 
 /******************************************************************************/

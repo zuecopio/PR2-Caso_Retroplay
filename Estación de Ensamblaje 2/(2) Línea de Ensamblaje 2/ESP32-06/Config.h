@@ -23,7 +23,7 @@
 
 //-----[ DEVIDE ]-------------------------------------------//
 
-#define DEVICE_RETROPLAY_ID            "06" //"retroplay-device-06"
+#define DEVICE_RETROPLAY_ID            "02" //"retroplay-device-02"
 
 
 //-----[ WIFI ]---------------------------------------------//
@@ -46,11 +46,18 @@
 
 //-----[ LINE ENTRANCE PRESENCE SENSOR ]--------------------//
 
-#define US_ONLY_WHEN_LINE_IS_FREE  1    // In this way, the US sensor only checks for the presence of new PCs if the line is free.
+typedef enum 
+{
+    LIBRE,
+    OCUPADA,
+    EMERGENCIA
+} line_status_t;
 
-#define trigPin           13            // Define TrigPin.
-#define echoPin           14            // Define EchoPin.
-#define MAX_DISTANCE      700           // Maximum sensor distance is rated at 400-500 cm.
+line_status_t   LINE_STATUS = OCUPADA;  // The US sensor only checks for the presence of new PCs if the line is free -> LINE_STATUS = LIBRE.
+
+#define trigPin               13        // Define TrigPin.
+#define echoPin               14        // Define EchoPin.
+#define MAX_DISTANCE          700       // Maximum sensor distance is rated at 400-500 cm.
 
 int   soundVelocity = 340;              // Define sound speed = 340 m/s.
 float timeOut = MAX_DISTANCE * 60; 

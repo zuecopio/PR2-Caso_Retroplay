@@ -12,15 +12,6 @@
  * @section  PR2-GIIROB
  */
 
-#if US_ONLY_WHEN_LINE_IS_FREE // When US_ONLY_WHEN_LINE_IS_FREE = 1, that #if is working.
-
-long now, lastMsg = 0;
-
-// Tiempo de actualización del sensor US.
-long sensorsUpdateInterval = 3000;
-
-#endif
-
 /******************************************************************************/
 /*!
  * @brief  Topic subscription function.
@@ -29,12 +20,8 @@ long sensorsUpdateInterval = 3000;
  */
 void suscribirseATopics(void)
 {
-    #if US_ONLY_WHEN_LINE_IS_FREE // When US_ONLY_WHEN_LINE_IS_FREE = 1, that #if is working.
-    
     mqtt_subscribe(LINE_STATUS_TOPIC);
     
-    #endif
-
 }   /* suscribirseATopics() */
 
 /******************************************************************************/
@@ -45,9 +32,7 @@ void suscribirseATopics(void)
  * @return void
  */
 void alRecibirMensajePorTopic(char * topic, String incomingMessage)
-{
-    #if US_ONLY_WHEN_LINE_IS_FREE // When US_ONLY_WHEN_LINE_IS_FREE = 1, that #if is working.
-    
+{  
     // Create a JSON document.
     JsonDocument doc;
     // Parse the JSON input.
@@ -62,53 +47,33 @@ void alRecibirMensajePorTopic(char * topic, String incomingMessage)
     String estado = doc["estado"];
     info("(JSON) Message received: "); infoln(estado);
 
-
     // If a message is received on the topic ...
     if (strcmp(topic, LINE_STATUS_TOPIC) == 0)
     {
         if (estado == "libre")
         {
-            bool hayPC = false;
-            
-            while (hayPC == false)
-            {
-                now = millis();
-      
-                if ((now - lastMsg) > sensorsUpdateInterval)
-                {
-                    lastMsg = now;
-            
-                    // Get the distance from the sensor ...
-                    //
-                    distance = getUsDistance();
-            
-                    // If the distance is less than 10 cm, there is
-                    // a new P-C placed at the entrance of the line.
-                    //
-                    if (distance < 10.0)
-                    {
-                        hayPC = true;
-                        
-                        // Create a JSON document.
-                        JsonDocument doc;
-                        doc["entrada"] = "hay";
-                
-                        // Serialize the JSON to a String.
-                        String msg_json;
-                        serializeJson(doc, msg_json);
-                
-                        // Send message by a topic.
-                        enviarMensajePorTopic(LINE_ENTRANCE_STATUS_TOPIC, msg_json);
-                        
-                        infoln("Estación 2, Línea 2: Hay un P-C disponible en la entrada");
-                    }
-                }
-            }
+            LINE_STATUS = LIBRE;
+        }
+    }
+
+    // If a message is received on the topic ...
+    if (strcmp(topic, LINE_STATUS_TOPIC) == 0)
+    {
+        if (estado == "ocupada")
+        {
+            LINE_STATUS = OCUPADA;
+        }
+    }
+
+    // If a message is received on the topic ...
+    if (strcmp(topic, LINE_STATUS_TOPIC) == 0)
+    {
+        if (estado == "emergencia")
+        {
+            LINE_STATUS = EMERGENCIA;
         }
     }
     
-    #endif
-
 }   /* alRecibirMensajePorTopic() */
 
 /******************************************************************************/

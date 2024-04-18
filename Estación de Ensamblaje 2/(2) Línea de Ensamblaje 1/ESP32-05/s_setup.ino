@@ -32,7 +32,7 @@ void on_setup(void)
     // Set EMERGENCY_BUTTON to input_pullup mode.
     pinMode(emergency_button.PIN, INPUT_PULLUP);
     // Create interrupt handler.
-    attachInterrupt(emergency_button.PIN, isr, FALLING);    
+    attachInterrupt(emergency_button.PIN, isr, FALLING);
 
 }   /* on_setup() */
 
