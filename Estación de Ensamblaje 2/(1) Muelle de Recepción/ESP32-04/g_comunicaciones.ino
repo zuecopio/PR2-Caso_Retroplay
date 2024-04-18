@@ -20,9 +20,6 @@
  */
 void suscribirseATopics(void)
 {
-    // TODO: añadir suscripciones a los topics MQTT ...
-    //
-
 }   /* suscribirseATopics() */
 
 /******************************************************************************/
