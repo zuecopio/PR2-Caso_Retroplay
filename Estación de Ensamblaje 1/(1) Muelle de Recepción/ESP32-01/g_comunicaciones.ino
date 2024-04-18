@@ -21,7 +21,7 @@
 void suscribirseATopics(void)
 {
     #if US_ONLY_WHEN_LINE_IS_FREE
-    mqtt_subscribe(LINE_STATUS_TOPIC);
+    mqtt_subscribe(MQTT_TOPIC_RECEPCION_STATUS);
     #endif
 }   /* suscribirseATopics() */
 
