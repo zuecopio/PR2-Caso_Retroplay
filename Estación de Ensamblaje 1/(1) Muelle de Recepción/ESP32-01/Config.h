@@ -53,5 +53,6 @@ float distancia=0.0;
 #define MQTT_SERVER_PORT                1883
 #define MQTT_USERNAME                  "giirob"
 #define MQTT_PASSWORD                  "UPV2024"
+#define MQTT_TOPIC_RECEPCION_STATUS    "nave/02/ensamblajes/estacion/0X/muelle_recepcion/estado"
 
 /*** end of file ***/
