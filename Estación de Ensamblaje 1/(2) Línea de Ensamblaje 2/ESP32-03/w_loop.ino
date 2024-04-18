@@ -42,7 +42,7 @@ void on_loop(void)
         // Send message by a topic.
         enviarMensajePorTopic(EMERGENCY_BUTTON_STATUS_TOPIC, msg_json);
         
-        infoln("Estación 1, Línea 1: ¡El botón de emergencia se ha pulsado!");
+        infoln("Estación 1, Línea 2: ¡El botón de emergencia se ha pulsado!");
         emergency_button.pressed = false;
     }
 
