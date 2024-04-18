@@ -49,7 +49,7 @@ void on_loop(void)
             // Send message by a topic.
             enviarMensajePorTopic(MQTT_TOPIC_RECEPCION_STATUS, msg_json);
             
-            infoln("Estación 1, Línea 1: Hay un P-C disponible en la entrada");
+            infoln("Estación 1: Hay un P-C disponible en la entrada");
         }
     }
     #endif
