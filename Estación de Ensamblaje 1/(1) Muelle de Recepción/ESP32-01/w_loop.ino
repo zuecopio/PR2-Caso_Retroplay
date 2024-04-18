@@ -30,10 +30,28 @@ void on_loop(void)
     if ((now - lastMsg) > sensorsUpdateInterval)
     {
         lastMsg = now;
+
+        distance = getUsDistance();
+
+        // If the distance is less than 10 cm, there is
+        // a new P-C placed at the entrance of the line.
+        //
+        if (distance < 10.0)
+        {
+            // Create a JSON document.
+            JsonDocument doc;
+            doc["entrada"] = "hay";
     
-        //
-        // Read and process sensors ...
-        //
+            // Serialize the JSON to a String.
+            String msg_json;
+            serializeJson(doc, msg_json);
+    
+            // Send message by a topic.
+            enviarMensajePorTopic(LINE_ENTRANCE_STATUS_TOPIC, msg_json);
+            
+            infoln("Estación 1, Línea 1: Hay un P-C disponible en la entrada");
+        }
+        #endif
     }
 
 }   /* on_loop() */
