@@ -20,9 +20,9 @@
  */
 void suscribirseATopics(void)
 {
-    // TODO: añadir suscripciones a los topics MQTT ...
-    //
-
+    #if US_ONLY_WHEN_LINE_IS_FREE
+    mqtt_subscribe(LINE_STATUS_TOPIC);
+    #endif
 }   /* suscribirseATopics() */
 
 /******************************************************************************/
@@ -34,12 +34,6 @@ void suscribirseATopics(void)
  */
 void alRecibirMensajePorTopic(char * topic, String incomingMessage)
 {
-    // TODO: Controlador que gestiona la recepción de datos.
-
-    // A partir de aquí debemos gestionar los mensajes
-    // recibidos por los diferentes topics (canales).
-    //
-
 }   /* alRecibirMensajePorTopic() */
 
 /******************************************************************************/
