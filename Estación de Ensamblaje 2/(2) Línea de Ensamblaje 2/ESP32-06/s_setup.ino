@@ -20,8 +20,19 @@
  */
 void on_setup(void)
 {
-    // TODO: Inicializar todas las salidas conectadas ...
-    //    
+    // LINE ENTRANCE PRESENCE SENSOR
+    //
+    // Set trigPin to output mode.
+    pinMode(trigPin, OUTPUT);
+    // Set echoPin to input mode.
+    pinMode(echoPin, INPUT);  
+
+    // EMERGENCY BUTTON
+    //
+    // Set EMERGENCY_BUTTON to input_pullup mode.
+    pinMode(emergency_button.PIN, INPUT_PULLUP);
+    // Create interrupt handler.
+    attachInterrupt(emergency_button.PIN, isr, FALLING);
 
 }   /* on_setup() */
 
