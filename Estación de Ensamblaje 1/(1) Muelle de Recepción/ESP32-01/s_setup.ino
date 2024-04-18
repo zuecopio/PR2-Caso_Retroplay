@@ -20,9 +20,8 @@
  */
 void on_setup(void)
 {
-    // TODO: Inicializar todas las salidas conectadas ...
-    //    
-
+    pinMode(trigPin, OUTPUT);
+    pinMode(echoPin, INPUT);
 }   /* on_setup() */
 
 /*** end of file ***/
