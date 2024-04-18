@@ -31,6 +31,21 @@
 #define NET_SSID                       "UPV-PSK"
 #define NET_PASSWD                     "giirob-pr2-2023"
 
+//-----[ DEFINES ]------------------------------------------//
+
+#define trigPin 13                     // define TrigPin
+#define echoPin 14                     // define EchoPin.
+#define MAX_DISTANCE 700 
+#define SD_MMC_CMD 38 
+#define SD_MMC_CLK 39 
+#define SD_MMC_D0 40 
+#define PIN_ANALOG_IN 1
+
+//-----[ NEEDED VARIABLES ]---------------------------------//
+
+float timeOut = MAX_DISTANCE * 60;
+int soundVelocity = 340;               // define sound speed = 340 m/s
+float distancia=0.0;
 
 //-----[ MQTT ]---------------------------------------------//
 
@@ -38,5 +53,6 @@
 #define MQTT_SERVER_PORT                1883
 #define MQTT_USERNAME                  "giirob"
 #define MQTT_PASSWORD                  "UPV2024"
+#define MQTT_TOPIC_RECEPCION_STATUS    "nave/02/ensamblajes/estacion/02/muelle_recepcion/estado"
 
 /*** end of file ***/
