@@ -40,19 +40,19 @@ void on_loop(void)
         {
             // Create a JSON document.
             JsonDocument doc;
-            doc["entrada"] = "hay";
+            doc["Estado muelle"] = "Ocupado";
     
             // Serialize the JSON to a String.
             String msg_json;
             serializeJson(doc, msg_json);
     
             // Send message by a topic.
-            enviarMensajePorTopic(LINE_ENTRANCE_STATUS_TOPIC, msg_json);
+            enviarMensajePorTopic(MQTT_TOPIC_RECEPCION_STATUS, msg_json);
             
             infoln("Estación 1, Línea 1: Hay un P-C disponible en la entrada");
         }
-        #endif
     }
+    #endif
 
 }   /* on_loop() */
 
