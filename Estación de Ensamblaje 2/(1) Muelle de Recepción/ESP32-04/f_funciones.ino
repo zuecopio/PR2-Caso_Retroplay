@@ -21,9 +21,19 @@
 void example(void)
 {
     // TODO: Desarrollo de la función ...
-    //
-    // TODO: Deberíamos publicar el estado del dispositivo cada vez que cambie.
-
+    float getDistance()
+    {
+        unsigned long pingTime;
+        float distance;
+        
+        digitalWrite (trigPin, HIGH);
+        delayMicroseconds(10);
+        digitalWrite(trigPin, LOW);
+    
+        prigTime = pulseIn(echoPin, HIGH, timeOut);
+        distance (float)pingTime * soundVelocity / 2 / 10000; 
+        return distance; 
+    }
 }   /* example() */
 
 /*** end of file ***/
