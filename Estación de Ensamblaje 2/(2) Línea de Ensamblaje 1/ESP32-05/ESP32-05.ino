@@ -69,7 +69,7 @@ void setup(void)
 
 /******************************************************************************/
 /*!
- * @brief  Arduino setup function.
+ * @brief  Arduino loop function.
  * @param  void
  * @return void
  */
